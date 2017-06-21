@@ -10,8 +10,7 @@ if(isset($_POST)){
 
   $new_width  = $_POST['width'];
   $new_height = $_POST['height'];
-  $download = $_POST['download'];
-
+  $download = isset($_POST['download'])?1:0;
   resizeImg($img,$new_width,$new_height,$download);
 
 }
