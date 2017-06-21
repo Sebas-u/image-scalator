@@ -20,12 +20,14 @@
     <label for="height">Select new height:</label>
     <input type="number" min="0" name="height" id="height">
     <label for="download">Download?</label>
-    <input type="checkbox" name="checkbox" value="1">
+    <input type="checkbox" name="download" value="1">
     <input type="submit" value="Upload Image" name="submit">
     
   </form>
 </body>
 
 </html>
+
+
 
 
