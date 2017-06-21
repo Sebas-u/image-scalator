@@ -1,5 +1,5 @@
 <?php
-function resizeImg($original,$new_width,$new_height,$ruta='./test_images/'){
+function resizeImg($original,$new_width,$new_height,$ruta='./test_images/',$download=0){
 	list($old_width, $old_height,$type) = getimagesize($original);
 
 	$ratio = $old_width/$old_height;
