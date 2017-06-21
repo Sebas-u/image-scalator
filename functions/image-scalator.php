@@ -1,15 +1,25 @@
 <?php
-function resizeImg($original,$new_width,$new_height,$ruta='./test_images/',$download=0){
+/********************************************************************************
+	resizeImg params:
+		$original 	-> original img resource
+		$new_width 	-> integer new width 
+		$new_height -> integer new height 
+		$ruta 		-> path where $original will be stored 
+	
+	resizeImg($img, 500, 400, 'images');
+******************************************************************************/
+function resizeImg($original,$new_width,$new_height,$ruta){
 	list($old_width, $old_height,$type) = getimagesize($original);
-
 	$ratio = $old_width/$old_height;
 	$new_ratio = ($new_width/$new_height);
 
 	$ruta .= $new_width.'x'.$new_height.'/';
+
 	if (!file_exists($ruta)) {
 		mkdir($ruta, 0777, true);
 	}
 	$folder = $ruta.basename($original);
+
 /***********************INFO****************************		
 echo <<< XXX
 
@@ -155,12 +165,17 @@ XXX;
 			/	  										/ 				/											/						
 			/////////////////////////////////////////////				/////////////////////////////////////////////						
 		*************************************************************************************************************************/
-		if($image = imagescale ( $image , $new_width  )){		
+		if($imagen_p = imagescale ( $image , $new_width  )){		
 			//CASO E
-			imagejpeg($image,$folder);
+			imagejpeg($imagen_p,$folder);
 		}else{
 			echo "No se pudo escalar";
 		}
 	}
+
+	imagedestroy($imagen_p);//final image
+	imagedestroy($image);	//scaled image
+	imagedestroy($img);		//original image
 }
 ?>				
+				
